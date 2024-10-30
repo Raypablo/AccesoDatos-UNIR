@@ -1,28 +1,65 @@
-import controller .GestorFicheros;
+import controller.GestionFicherosEscritura;
+import controller.GestorFicherosConjuntos;
+import controller.GestorFicherosLectura;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.util.Scanner;
 
 public class Entrada {
 
     public static void main(String[] args) {
 
-        GestorFicheros gestorFicheros = new GestorFicheros();
-        //gestorFicheros.lecturaDirectorios("src/resources/directorio");
+        /*
+         *******************
+         *     CLASE 7    *
+         *******************
+         */
 
-        gestorFicheros.lecturaTextoPlano("src/resources/ficheros/lectura.txt");
+        GestorFicherosConjuntos gestorFicherosConjuntos = new GestorFicherosConjuntos();
+        Scanner scanner = new Scanner(System.in);
+        int opcion = 0;
+
+        do {
+
+            System.out.println("Introduce que quieres hacer");
+            opcion = scanner.nextInt();
+
+            switch (opcion) {
+
+                case 1:
+                    gestorFicherosConjuntos.cifrado("src/resources/ficheros/cifrado.txt");
+                    break;
+
+                case 2:
+                    gestorFicherosConjuntos.descifrarCodigo("src/resources/ficheros/cifrado.txt");
+                    break;
+            }
+
+        }while(opcion!=0);
 
 
+         /*
+           *******************
+           *     CLASE 6    *
+           *******************
 
 
+        //GestionFicherosEscritura gestionFicherosEscritura = new GestionFicherosEscritura();
+        //gestionFicherosEscritura.escribirFichero("src/resources/ficheros/");
 
-
-
-
-
+        GestorFicherosConjuntos gestorFicherosConjuntos = new GestorFicherosConjuntos();
+        gestorFicherosConjuntos.lecturaEscritura("src/resources/ficheros/cifrado.txt");
+        */
 
         /*
+           *******************
+           *     CLASE 4    *
+           *******************
+        GestorFicherosLectura gestorFicherosLectura = new GestorFicherosLectura();
+        //gestorFicheros.lecturaDirectorios("src/resources/directorio");
+
+        gestorFicherosLectura.lecturaTextoPlano("src/resources/ficheros/lectura.txt");
+
+
 
            *******************
            *     CLASE 3     *
