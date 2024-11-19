@@ -111,6 +111,7 @@ public class GestorFicheros {
         }catch (IOException e){
 
             System.out.println("Problema con el fichero");
+            System.out.println(e.getMessage());
 
         }finally {
 
@@ -124,6 +125,39 @@ public class GestorFicheros {
 
             }
         }
+    }
+
+    public void lecturaObjetos (String path){
+
+
+        File file = new File(path);
+        ObjectInputStream objectInputStream = null;
+
+        try {
+
+            objectInputStream = new ObjectInputStream(new FileInputStream(file));
+            Producto producto = (Producto) objectInputStream.readObject(); // Por si acaso no casteamos correctamente la clase hay que poner en catch ClassCastException
+            producto.mostrarDatos();
+
+            /*
+            objectInputStream.readObject(); //se puede poner asi si no conocemos la clase del objeto guardado
+            Hay que poner un ClassNotFoundException por si no encuentra la clase a no ser que pongamos la clase concreta.
+            */
+
+        } catch (IOException e) {
+
+            System.out.println("Error en la lectura del fichero");
+
+        } catch (ClassNotFoundException e) {
+
+            System.out.println("No se encuentra la clase destino");
+
+        }catch (ClassCastException e){
+
+            System.out.println("Error al declarar el tipo de dato");
+
+        }
+
     }
 
 }
